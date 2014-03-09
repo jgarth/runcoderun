@@ -34,6 +34,11 @@ class RunCodeRunView extends ScrollView
   getFilenameFromPath: (path) ->
     path.split('/').pop()
 
+  enforcePermissions: (path) ->
+    original_mode = fs.statSync(@filePath).mode.toString(8)
+    unless original_mode.substr(3,1) is "7"
+      fs.chmodSync @filePath, original_mode.substr(0,3) + "7" + original_mode.substr(4,2)
+
   runCode: ->
     if @editorId?
       @filePath = @editorForId(@editorId).getPath()
@@ -50,6 +55,9 @@ class RunCodeRunView extends ScrollView
         fs.writeFileSync @filePath, @editorForId(@editorId).getText(), {mode: 493}
       catch error
         stderr = error
+    else
+      # Check if file is executable, if not, make it executable.
+      @enforcePermissions @filePath
 
     # Update title
     @filename = @getFilenameFromPath(@filePath)
@@ -65,7 +73,6 @@ class RunCodeRunView extends ScrollView
       fs.unlink(@filePath) if @isTempFile
 
   getUri: ->
-    console.log("geturi called.")
     "runcoderun://editor/#{@editorId}"
 
   # Render colorized exec output

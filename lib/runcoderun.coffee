@@ -28,8 +28,6 @@ module.exports =
     editor = atom.workspace.getActiveEditor()
     return unless editor?
 
-    # TODO: scope to executable files?
-
     previousActivePane = atom.workspace.getActivePane()
 
     uri = "runcoderun://editor/#{editor.id}"
