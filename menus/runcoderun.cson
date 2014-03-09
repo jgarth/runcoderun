@@ -1,0 +1,11 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Run, Code, Run!'
+      'submenu': [
+        { 'label': 'Run', 'command': 'runcoderun:run' }
+      ]
+    ]
+  }
+]
