@@ -1,7 +1,7 @@
 {
   "name": "runcoderun",
   "main": "./lib/runcoderun",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Runs the active file in another pane",
   "repository": "https://github.com/jgarth/runcoderun",
   "keywords": [
