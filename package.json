@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "Runs the active file in another pane",
   "repository": "https://github.com/jgarth/runcoderun",
+  "keywords": ["run", "build", "shell"],
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
