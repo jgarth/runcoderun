@@ -81,8 +81,8 @@ class RunCodeRunView extends ScrollView
 
     @html $$ ->
       @h2 "Running '#{filename}'"
-      @div "#{stderr}", class: 'stderr'
-      @div "#{stdout}"
+      @pre "#{stderr}", class: 'stderr'
+      @pre "#{stdout}"
 
   # TODO: find out how to specify node module dependencies and replace this
   generate_fake_short_uuid: ->
