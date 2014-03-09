@@ -1,13 +1,12 @@
 {
   "name": "runcoderun",
   "main": "./lib/runcoderun",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Runs the active file in another pane",
   "repository": "https://github.com/jgarth/runcoderun",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
