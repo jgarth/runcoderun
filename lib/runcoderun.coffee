@@ -19,7 +19,7 @@ module.exports =
         @runCodeRunView = new RunCodeRunView(filePath: pathname)
 
   deactivate: ->
-    @runCodeRunView.destroy()
+    @runCodeRunView?.destroy()
 
   serialize: ->
     runCodeRunViewState: @runCodeRunView.serialize()
