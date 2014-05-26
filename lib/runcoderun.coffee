@@ -22,7 +22,7 @@ module.exports =
     @runCodeRunView?.destroy()
 
   serialize: ->
-    runCodeRunViewState: @runCodeRunView.serialize()
+    runCodeRunViewState: @runCodeRunView?.serialize()
 
   show: ->
     editor = atom.workspace.getActiveEditor()
