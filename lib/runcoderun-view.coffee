@@ -64,7 +64,7 @@ class RunCodeRunView extends ScrollView
     @trigger 'title-changed'
 
     # Run file
-    exec "'#{@filePath}'", (error, stdout, stderr) =>
+    exec "'#{@filePath}'", {cwd: atom.project.getRootDirectory().path}, (error, stdout, stderr) =>
       # "Map" execution error to stderr
       stderr += error if error?
       # Render output
