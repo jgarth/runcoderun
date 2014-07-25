@@ -14,7 +14,7 @@ class RunCodeRunView extends ScrollView
   @content: ->
     @div class: 'vertical runcoderun'
 
-  initialize: ({@editorId, filePath}) ->
+  initialize: ({@editorId, @filePath}) ->
 
   editorForId: (editorId) ->
     for editor in atom.workspace.getEditors()

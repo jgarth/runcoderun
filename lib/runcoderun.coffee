@@ -6,7 +6,8 @@ module.exports =
   runCodeRunView: null
 
   activate: (state) ->
-    atom.workspaceView.command "runcoderun:run", => @show()
+    atom.workspaceView.command "runcoderun:run", => @showEditor()
+    atom.workspaceView.command "runcoderun:tree", => @showFile()
 
     atom.workspace.registerOpener (uriToOpen) ->
       {protocol, host, pathname} = url.parse(uriToOpen)
@@ -16,7 +17,7 @@ module.exports =
       if host is 'editor'
         @runCodeRunView = new RunCodeRunView(editorId: pathname.substring(1))
       else
-        @runCodeRunView = new RunCodeRunView(filePath: pathname)
+        @runCodeRunView = new RunCodeRunView(filePath: pathname.substring(1))
 
   deactivate: ->
     @runCodeRunView?.destroy()
@@ -24,7 +25,7 @@ module.exports =
   serialize: ->
     runCodeRunViewState: @runCodeRunView?.serialize()
 
-  show: ->
+  showEditor: ->
     editor = atom.workspace.getActiveEditor()
     return unless editor?
 
@@ -34,3 +35,11 @@ module.exports =
     atom.workspace.open(uri, split: 'right', searchAllPanes: true).done (runCodeRunView) ->
       runCodeRunView.runCode()
       previousActivePane.activate()
+
+  showFile: ->
+    rootDir = atom.project.getRootDirectory().path
+    filePath = atom.workspaceView.find('.tree-view .selected .name').data("path")
+    uri = "runcoderun://file/#{rootDir}/#{filePath}"
+    
+    atom.workspace.open(uri, split: 'right', searchAllPanes: true).done (runCodeRunView) ->
+      runCodeRunView.runCode()
