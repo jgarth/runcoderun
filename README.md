@@ -1,3 +1,8 @@
+# NOTE: This software is no longer maintained.
+I'm sorry for any users, but I simply did not have the continued time & interest in maintaining this Atom package and keeping it running on newer versions of Atom. If you're interested, please continue where I left off. 
+
+As an alternative, you might want to check out this package: [script](https://atom.io/packages/script)
+
 # Run, Code, Run!
 
 ## Usage
